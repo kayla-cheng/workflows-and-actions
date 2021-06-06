@@ -20,9 +20,9 @@
     Steps know about possible transitions
     Workflow may have one start step
     Workflow may have one or more final steps
-    supplycore:
     Table:
         oro_workflow_step
+    supplycore:
     yml: vendor\oro\crm\src\Oro\Bundle\SalesBundle\Resources\config\oro\workflows\opportunity_flow\steps.yml
 #### 3. Attributes
     Represent data of workflow

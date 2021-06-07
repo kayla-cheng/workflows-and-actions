@@ -13,7 +13,7 @@
     Tables:
         oro_workflow_definition
         oro_workflow_item
-    Admin create workflow 
+    How to creat simple workflow in Admin Console?
     node: entity/entity_attribute/start_step/applications/attributes/steps/transitions/transition_definitions
 #### 2. Steps
     Represent state of a workflow

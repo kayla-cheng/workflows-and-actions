@@ -14,19 +14,22 @@
         oro_workflow_definition
         oro_workflow_item
     Admin create workflow 
+    node: entity/entity_attribute/start_step/applications/attributes/steps/transitions/transition_definitions
 #### 2. Steps
     Represent state of a workflow
     Steps are ordered
     Steps know about possible transitions
     Workflow may have one start step
     Workflow may have one or more final steps
+    node: order/allowed_transitions/is_final
     Table:
         oro_workflow_step
-    supplycore:
+    supplycore: src\SupplyCore\Bundle\RFPBundle\Resources\config\oro\workflows.yml
     yml: vendor\oro\crm\src\Oro\Bundle\SalesBundle\Resources\config\oro\workflows\opportunity_flow\steps.yml
 #### 3. Attributes
     Represent data of workflow
     The attribute data is stored inside the WorkflowItem entity
+    node: type/options/label/property_path
     supplycore:
     yml: vendor\oro\crm\src\Oro\Bundle\SalesBundle\Resources\config\oro\workflows\opportunity_flow\attributes.yml
 #### 4. Variables
@@ -41,7 +44,8 @@
     Might have ACL restriction
     Might have assigned conditions
     Might have related actions
-    supplycore: 
+    node: step_to/transition_definition/is_start/is_hidden/acl_resource/frontend_options/form_options/transition_definition/triggers
+    supplycore: src\SupplyCore\Bundle\RFPBundle\Resources\config\oro\workflows\sc_request\start.yml
     yml: vendor\oro\crm\src\Oro\Bundle\SalesBundle\Resources\config\oro\workflows\opportunity_flow\transitions.yml
     
 #### 6. Transition Definition
@@ -50,7 +54,8 @@
     Actions, conditions(can be performed)
     Might be empty
     Several transitions might use the same transition definition
-    supplycore: 
+    node: preactions/preconditions/conditions/actions
+    supplycore: src\SupplyCore\Bundle\RFPBundle\Resources\config\oro\workflows\sc_request\ready_for_review.yml
     yml: vendor\oro\crm\src\Oro\Bundle\SalesBundle\Resources\config\oro\workflows\opportunity_flow\transition_definitions.yml
     
 #### 7. Actions
@@ -59,6 +64,10 @@
     Might have conditions
     Custom actions: oro_action.action
     List of all actions: debug:container --tag="oro_action.action"
+    Action groups: 
+        node: parameters/conditions/actions
+        run: @run_action_group
+![image](https://user-images.githubusercontent.com/56823408/120953769-51613b00-c780-11eb-9858-ae297099b354.png)
 #### 8. Conditions
     check that returns
     Might have parameters
@@ -69,7 +78,8 @@
     Can be added to specific routes or datagrids
     Use actions and conditions
     example: oro CURD operations
-    extends/for all entities/acl resource/frontend options/button options/actions/order/
+    extends/enabled/entities/for_all_entities/exclude_entities/routes/datagrids/for_all_datagrids/exclude_datagrids/order/acl_resource/frontend_options/preactions/preconditions
+    attributes/datagrid_options/form_options/form_init/conditions/actions/button_options
 ![image](https://user-images.githubusercontent.com/56823408/120912923-e3583d80-c6c5-11eb-8693-1da55cfa34ef.png)
 #### 10. Transition Triggers
     Transition Triggers are used to perform Transition by Event or by cron-definition. There are two types of triggers: Event Trigger and Cron Trigger.

@@ -58,7 +58,22 @@
     supplycore: src\SupplyCore\Bundle\RFPBundle\Resources\config\oro\workflows\sc_request\ready_for_review.yml
     yml: vendor\oro\crm\src\Oro\Bundle\SalesBundle\Resources\config\oro\workflows\opportunity_flow\transition_definitions.yml
     
-#### 7. Actions
+#### 7. Transition Triggers
+    Transition Triggers are used to perform Transition by Event or by cron-definition. There are two types of triggers: Event Trigger and Cron Trigger.
+    event triggers: 
+        supplycore: 
+        yml: vendor\oro\commerce-crm\src\Oro\Bridge\QuoteSales\Resources\config\oro\workflows\quote_flow\transitions.yml
+    cron triggers:
+        supplycore:
+        yml: vendor\oro\platform\src\Oro\Bundle\WorkflowBundle\Tests\Functional\Command\DataFixtures\InvalidFilterExpression\workflows.yml
+        
+#### 8. Translation
+    Location: Resources/translations/workfloes.<en>.yml
+    Translation for steps, attributes and transitions
+    Console Commands: 
+        bin/console oro:workflow:translations:dump `workflow_name`
+        
+#### 9. Actions
     functionality
     Might have parameters
     Might have conditions
@@ -68,12 +83,12 @@
         node: parameters/conditions/actions
         run: @run_action_group
 ![image](https://user-images.githubusercontent.com/56823408/120953769-51613b00-c780-11eb-9858-ae297099b354.png)
-#### 8. Conditions
+#### 10. Conditions
     check that returns
     Might have parameters
     Custom conditions: oro_action.condition
     List of all conditions: debug:container --tag="oro_action.condition"
-#### 9. Opreations
+#### 11. Opreations
     Provide possibility to assign any interaction with user
     Can be added to specific routes or datagrids
     Use actions and conditions
@@ -81,19 +96,7 @@
     extends/enabled/entities/for_all_entities/exclude_entities/routes/datagrids/for_all_datagrids/exclude_datagrids/order/acl_resource/frontend_options/preactions/preconditions
     attributes/datagrid_options/form_options/form_init/conditions/actions/button_options
 ![image](https://user-images.githubusercontent.com/56823408/120912923-e3583d80-c6c5-11eb-8693-1da55cfa34ef.png)
-#### 10. Transition Triggers
-    Transition Triggers are used to perform Transition by Event or by cron-definition. There are two types of triggers: Event Trigger and Cron Trigger.
-    event triggers: 
-        supplycore: 
-        yml: vendor\oro\commerce-crm\src\Oro\Bridge\QuoteSales\Resources\config\oro\workflows\quote_flow\transitions.yml
-    cron triggers:
-        supplycore:
-        yml: vendor\oro\platform\src\Oro\Bundle\WorkflowBundle\Tests\Functional\Command\DataFixtures\InvalidFilterExpression\workflows.yml
-#### 11. Translation
-    Location: Resources/translations/workfloes.<en>.yml
-    Translation for steps, attributes and transitions
-    Console Commands: 
-        bin/console oro:workflow:translations:dump `workflow_name`
+
 
 
 
